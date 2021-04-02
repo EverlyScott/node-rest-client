@@ -7,7 +7,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^12.0.2"
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5"
   },
   "build": {
     "nsis": {
