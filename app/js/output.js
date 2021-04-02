@@ -16,7 +16,7 @@ require(['vs/editor/editor.main'], () => {
     automaticLayout: true,
     wordWrap: 'on',
     minimap: {
-      enabled: false
+      enabled: true
     }
   })
 })

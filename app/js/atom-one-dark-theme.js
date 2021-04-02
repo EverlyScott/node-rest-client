@@ -10,6 +10,17 @@ require(['vs/editor/editor.main'], () => {
     inherit: true,
     rules: [{ background: 'EDF9FA' }],
     colors: {
+      "activityBar.background": "#333842",
+      "activityBar.foreground": "#D7DAE0",
+      "activityBarBadge.background": "#528BFF",
+      "activityBarBadge.foreground": "#D7DAE0",
+      "button.background": "#4D78CC",
+      "button.foreground": "#FFFFFF",
+      "button.hoverBackground": "#6087CF",
+      "diffEditor.insertedTextBackground": "#00809B33",
+      "dropdown.background": "#353b45",
+      "dropdown.border": "#181A1F",
+      "editorIndentGuide.activeBackground": "#626772",
       "editor.background": "#282C34",
       "editor.foreground": "#ABB2BF",
       "editor.lineHighlightBackground": "#99BBFF0A",
@@ -70,6 +81,11 @@ require(['vs/editor/editor.main'], () => {
       "peekViewResult.selectionBackground": "#2C313A",
       "peekViewTitle.background": "#1B1D23",
       "peekViewEditor.background": "#1B1D23"
-    }
+    },
+    rules: [
+      {
+        background: '#282C34'
+      }
+    ]
   })
 })
