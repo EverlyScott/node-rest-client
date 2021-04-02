@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="settings">
+      <input class="setting" type="text" id="endpoint" placeholder="API Endpoint (https://api.example.com/endpoint)" spellcheck="false" autocomplete="false" autocapitalize="false" /><br />
+      <select class="setting" id="method">
+        <option value="">Method</option>
+        <option value="GET">GET</option>
+        <option value="HEAD">HEAD</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+        <option value="CONNECT">CONNECT</option>
+        <option value="OPTIONS">OPTIONS</option>
+        <option value="TRACE">TRACE</option>
+        <option value="PATCH">PATCH</option>
+      </select><br />
+      <button onclick="makeRequest()">Go</button>
+    </div>
+
+    <div id="editor" class="split"><div class="filename">Request Body (JSON)</div></div>
+
+    <div id="output" class="split"><div class="filename">Output<span id="beautify" class="beautify"><img onclick="beautifyOutput()" src="img/beautify.svg" /></span></div></div>
+
+    <script src="vendor/css-3.0.0/index.js"></script>
+    <script src="vendor/monaco-editor-0.23.0/min/vs/loader.js"></script>
+    <script src="js/atom-one-dark-theme.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/output.js"></script>
+    <script src="js/displayOptions.js"></script>
+    <script src="js/request.js"></script>
+  </body>
+</html>

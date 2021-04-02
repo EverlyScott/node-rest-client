@@ -1,0 +1,124 @@
+:root {
+  --fonts: Consolas, "Courier New", monospace;
+  --textColor: #ffffff;
+  --backgroundColor: #282C34;
+  --borderColor: #181A1F;
+  --accentColor: #21252B;
+  --beautifyHover: rgba(255, 255, 255, .4);
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--backgroundColor);
+  color: var(--textColor);
+  font-family: arial;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.settings .setting {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 400px;
+  font-family: var(--fonts);
+  color: var(--textColor);
+  background: var(--accentColor);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+
+select {
+  font-family: var(--fonts);
+  color: var(--textColor);
+  background: var(--accentColor);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+select:focus {
+  outline: none;
+}
+
+button {
+  font-family: var(--fonts);
+  color: var(--textColor);
+  background: var(--accentColor);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+button:focus {
+  outline: none;
+}
+
+.filename {
+  text-align: center;
+  padding: 10px 16px 10px 0;
+  font-family: var(--fonts);
+  background: var(--accentColor);
+}
+
+#editor {
+  position: absolute;
+  bottom: 0px;
+  width: calc(100% - 2px);
+  height: calc(100vh - 130px);
+  border: 1px solid var(--borderColor);
+  text-align: left;
+}
+
+#editor.split {
+  width: calc(50% - 2px)
+}
+
+#output {
+  position: absolute;
+  bottom: 0px;
+  width: calc(100% - 2px);
+  height: calc(100vh - 130px);
+  border: 1px solid var(--borderColor);
+  text-align: left;
+}
+
+#output.split {
+  right: 0px;
+  width: calc(50% - 2px);
+}
+
+.beautify {
+  display: none;
+  position: absolute;
+  right: 20px;
+}
+
+.beautify.show {
+  display: inline-block;
+}
+
+.beautify img {
+  position: relative;
+  bottom: 8px;
+  padding: 5px;
+}
+
+.beautify img:hover {
+  background: var(--beautifyHover);
+  border-radius: 360px;
+}
+
+.no-display {
+  display: none;
+}
+
+.error {
+  box-shadow: 0 0 1px 1px #ff0000;
+}

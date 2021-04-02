@@ -1,0 +1,17 @@
+{
+  "name": "rest-client",
+  "productName": "Node REST Client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^12.0.2"
+  },
+  "build": {
+    "nsis": {
+      "oneClick": false
+    }
+  }
+}
