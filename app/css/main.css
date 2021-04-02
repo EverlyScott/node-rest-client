@@ -65,6 +65,11 @@ button:focus {
   padding: 10px 16px 10px 0;
   font-family: var(--fonts);
   background: var(--accentColor);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #editor {

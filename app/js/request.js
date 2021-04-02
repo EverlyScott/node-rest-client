@@ -37,6 +37,10 @@ function makeRequest() {
       body: method == 'GET' || method == 'HEAD' ? undefined : body
     }).then(res => res.text()).then((value) => {
       setOutput(value)
+    }).catch((err) => {
+      console.error(err)
+      document.getElementById('endpoint').classList.add('error')
+      output.setValue(err.toString())
     })
     
     //Automatically switch to the correct layout
