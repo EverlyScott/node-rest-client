@@ -14,6 +14,7 @@ require(['vs/editor/editor.main'], () => {
     tabSize: 2,
     readOnly: true,
     automaticLayout: true,
+    wordWrap: 'on',
     minimap: {
       enabled: false
     }

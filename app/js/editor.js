@@ -13,6 +13,7 @@ require(['vs/editor/editor.main'], () => {
     theme: 'atomOneDark',
     tabSize: 2,
     automaticLayout: true,
+    wordWrap: 'on',
     minimap: {
       enabled: false
     }
