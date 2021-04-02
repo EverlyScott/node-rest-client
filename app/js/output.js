@@ -2,7 +2,7 @@ var output
 
 require.config({
   paths: {
-    vs: 'vendor/monaco-editor-0.23.0/min/vs'
+    vs: '../node_modules/monaco-editor/min/vs'
   }
 })
 
