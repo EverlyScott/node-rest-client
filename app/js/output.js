@@ -1,6 +1,12 @@
 var output
 
-loadMonaco((monaco) => {
+require.config({
+  paths: {
+    vs: '../node_modules/monaco-editor/min/vs'
+  }
+})
+
+require(['vs/editor/editor.main'], () => {
   output = monaco.editor.create(document.getElementById('output'), {
     value: '',
     language: 'json',
@@ -25,9 +31,9 @@ function setOutput(value) {
   }
 
   if (language == 'json') {
-    document.getElementById('beautify').classList = 'option show'
+    document.getElementById('beautify').classList = 'beautify show'
   } else {
-    document.getElementById('beautify').classList = 'option'
+    document.getElementById('beautify').classList = 'beautify'
   }
 
   output.setValue(value)

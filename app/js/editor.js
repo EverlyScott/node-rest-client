@@ -1,6 +1,12 @@
 var editor
 
-loadMonaco((monaco) => {
+require.config({
+  paths: {
+    vs: '../node_modules/monaco-editor/min/vs'
+  }
+})
+
+require(['vs/editor/editor.main'], () => {
   editor = monaco.editor.create(document.getElementById('editor'), {
     value: '{\n  \n}',
     language: 'json',

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow } = require('electron')
 
 var mainWindow = null
 
@@ -10,18 +10,10 @@ app.on('ready', () => {
     minHeight: 430,
     title: 'Node REST Client',
     fullscreenable: true,
-    resizable: true,
-    webPreferences: {
-      enableRemoteModule: true,
-      nodeIntegration: true,
-      worldSafeExecuteJavaScript: true
-    },
-    autoHideMenuBar: true
+    resizable: true
   })
 
   mainWindow.loadFile('app/index.html')
-
-  Menu.setApplicationMenu(require('./menu'))
 
   mainWindow.on('closed', () => {
     mainWindow = null
