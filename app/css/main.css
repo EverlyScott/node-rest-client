@@ -99,23 +99,27 @@ button:focus {
   width: calc(50% - 2px);
 }
 
-.beautify {
-  display: none;
+.options {
+  display: inline-block;
   position: absolute;
   right: 20px;
 }
 
-.beautify.show {
+.option {
+  display: none;
+}
+
+.option.show {
   display: inline-block;
 }
 
-.beautify img {
+.option {
   position: relative;
   bottom: 8px;
   padding: 5px;
 }
 
-.beautify img:hover {
+.option:hover {
   background: var(--beautifyHover);
   border-radius: 360px;
 }

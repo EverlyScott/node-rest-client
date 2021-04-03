@@ -1,10 +1,4 @@
-require.config({
-  paths: {
-    vs: '../node_modules/monaco-editor/min/vs'
-  }
-})
-
-require(['vs/editor/editor.main'], () => {
+loadMonaco((monaco) => {
   monaco.editor.defineTheme('atomOneDark', {
     base: 'vs-dark',
     inherit: true,
