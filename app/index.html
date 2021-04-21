@@ -21,11 +21,29 @@
       <button onclick="makeRequest()">Go</button>
     </div>
 
-    <div id="editor" class="split"><div class="filename">Request Body (JSON)</div></div>
+    <div id="loadbar" class="loading"></div>
 
-    <div id="output" class="split"><div class="filename">Output<span id="beautify" class="beautify"><img onclick="beautifyOutput()" src="img/beautify.svg" /></span></div></div>
+    <div id="editor" class="split">
+      <div class="filename">
+        Request Body (JSON)
+        <span class="options">
+          <img alt="Menu" class="option show" id="editor-menu" onclick="editorMenu()" src="img/menu.svg" />
+        </span>
+      </div>
+    </div>
 
-    <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+    <div id="output" class="split">
+      <div class="filename">
+        Output
+        <span class="options">
+          <img alt="Beautify" class="option" id="beautify" onclick="beautifyOutput()" src="img/beautify.svg" />
+          <img alt="Menu" class="option show" id="output-menu" onclick="outputMenu()" src="img/menu.svg" />
+        </span>
+      </div>
+    </div>
+
+    <script src="js/loadMonaco.js"></script>
+    <script src="js/menus.js"></script>
     <script src="js/atom-one-dark-theme.js"></script>
     <script src="js/editor.js"></script>
     <script src="js/output.js"></script>

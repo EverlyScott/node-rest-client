@@ -27,6 +27,9 @@ function makeRequest() {
   }
 
   if (!hasError) {
+    const loadModel = monaco.editor.createModel('', 'plaintext')
+    output.setModel(loadModel)
+    document.getElementById('loadbar').classList.add('animated')
     //Make request
     fetch(endpoint, {
       method,
@@ -36,8 +39,10 @@ function makeRequest() {
       redirect: 'follow',
       body: method == 'GET' || method == 'HEAD' ? undefined : body
     }).then(res => res.text()).then((value) => {
+      document.getElementById('loadbar').classList.remove('animated')
       setOutput(value)
     }).catch((err) => {
+      document.getElementById('loadbar').classList.remove('animated')
       console.error(err)
       document.getElementById('endpoint').classList.add('error')
       output.setValue(err.toString())
