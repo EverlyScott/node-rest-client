@@ -231,9 +231,15 @@ function genMenuTemplate(name, monacoVar) {
         const filename = `${tmp}/noderestclient-tmp-${name}-${randomStr(6)}.${name === 'editor' ? 'json' : langToExt[currentLang]}`
         fs.writeFileSync(filename, monacoVar.getValue())
         const openVSCode = remote.require('child_process').spawn('code', [filename], { shell: true })
-        openVSCode.on('error', (err) => {
-          //If vscode fails to open, try using it's URI instead (maybe the user doesn't have the cli installed)
-          remote.require('electron').shell.openExternal(`vscode://file/${filename}`)
+        openVSCode.stdout.on('data', (data) => {
+          console.log(data)
+        })
+        openVSCode.on('exit', (code) => {
+          if (code !== 0) {
+            //If vscode fails to open, try using it's URI instead (maybe the user doesn't have the cli installed)
+            console.log(`Failed to run "code ${filename}". This is most likely because you do not have the vscode cli instaled. Falling back to the vscode uri ("vscode://file/${filename}")`)
+            remote.require('electron').shell.openExternal(`vscode://file/${filename}`)
+          }
         })
       }
     }
