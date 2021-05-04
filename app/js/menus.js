@@ -228,19 +228,22 @@ function genMenuTemplate(name, monacoVar) {
         const fs = remote.require('fs')
         const tmp = remote.require('os').tmpdir()
 
-        const filename = `${tmp}/noderestclient-tmp-${name}-${randomStr(6)}.${name === 'editor' ? 'json' : langToExt[currentLang]}`
+        const rndStr = randomStr(6)
+
+        const filename = `${tmp}/noderestclient-tmp-${name}-${rndStr}.${name === 'editor' ? 'json' : langToExt[currentLang]}`
         fs.writeFileSync(filename, monacoVar.getValue())
         const openVSCode = remote.require('child_process').spawn('code', [filename], { shell: true })
-        openVSCode.stdout.on('data', (data) => {
-          console.log(data)
+        openVSCode.on('error', (err) => {
+          //If vscode fails to open, try using it's URI instead (maybe the user doesn't have the cli installed)
+          remote.require('electron').shell.openExternal(`vscode://file/${filename}`)
         })
-        openVSCode.on('exit', (code) => {
-          if (code !== 0) {
-            //If vscode fails to open, try using it's URI instead (maybe the user doesn't have the cli installed)
-            console.log(`Failed to run "code ${filename}". This is most likely because you do not have the vscode cli instaled. Falling back to the vscode uri ("vscode://file/${filename}")`)
-            remote.require('electron').shell.openExternal(`vscode://file/${filename}`)
-          }
-        })
+
+        // Watch the file for changes and reflect them in monaco if vscode was opened via the editor
+        if (name === 'editor') {
+          fs.watch(`${tmp}/noderestclient-tmp-editor-${rndStr}.json`, () => {
+            monacoVar.setValue(fs.readFileSync(`${tmp}/noderestclient-tmp-editor-${rndStr}.json`, 'utf-8'))
+          })
+        }
       }
     }
   ]
