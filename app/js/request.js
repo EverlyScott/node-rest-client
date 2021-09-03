@@ -1,3 +1,7 @@
+const prompt = remote.require('electron-prompt')
+
+const promptStyle = 'app/css/prompt.css'
+
 function makeRequest() {
   const endpoint = document.getElementById('endpoint').value
   const method = document.getElementById('method').value
@@ -38,7 +42,7 @@ function makeRequest() {
       },
       redirect: 'follow',
       body: method == 'GET' || method == 'HEAD' ? undefined : body
-    }).then(res => res.text()).then((value) => {
+    }).then(res => checkStatus(res, endpoint, method, body)).then((value) => {
       document.getElementById('loadbar').classList.remove('animated')
       setOutput(value)
     }).catch((err) => {
@@ -89,4 +93,39 @@ function automaticLayoutChange() {
       break
     }
   }
+}
+
+async function checkStatus(res, endpoint, method, body) {
+  if (res.status === 401) {
+    const username = await prompt({
+      title: 'This endopoint requires HTTP authentication!',
+      label: 'Please enter your username:',
+      type: 'input',
+      inputAttrs: {
+        type: 'text'
+      },
+      customStylesheet: promptStyle
+    })
+
+    const password = await prompt({
+      title: 'This endpoint requires HTTP authentication!',
+      label: 'Please enter your password:',
+      type: 'input',
+      inputAttrs: {
+        type: 'password'
+      },
+      customStylesheet: promptStyle
+    })
+
+    const newres = await fetch(endpoint, {
+      method,
+      headers: {
+        'content-type': 'application/json',
+        authorization: 'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
+      },
+      body: method == 'GET' || method == 'HEAD' ? undefined : body
+    })
+    return await newres.text()
+  }
+  return await res.text()
 }

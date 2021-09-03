@@ -1,0 +1,29 @@
+body {
+  background-color: #282C34!important;
+  color: #ffffff!important;
+}
+
+#container {
+  overflow-y: hidden!important;
+}
+
+#buttons > button, #buttons > input[type=submit] z{
+  border-radius: 5px!important;
+  border: none!important;
+}
+
+
+#ok {
+  background-color: #21252B!important;
+}
+
+input[type=text],input[type=password] {
+  background-color: #21252B!important;
+  border: none!important;
+  border-radius: 5px!important;
+  color: #ffffff!important;
+}
+
+input[type=text]:focus,input[type=password]:focus {
+  outline: none!important;
+}
